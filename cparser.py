@@ -1,10 +1,10 @@
 class nmParse:
     def __init__(self, common, official, translations, altSpellings, **kwargs):
-        self.codes          = self.ccparse(**kwargs)
-        self.name           = common
-        self.official       = official
-        self.trns           = translations
-        self.altSpellings   = altSpellings
+        self.codes = self.ccparse(**kwargs)
+        self.name = common
+        self.official = official
+        self.trns = translations
+        self.altSpellings = altSpellings
 
     def ccparse(self, cca2, cca3, **kwargs):
         ret = [cca2, cca3]
@@ -22,13 +22,13 @@ class lcParse:
     def __init__(
         self, region, continents, area, maps, capitalInfo, latlng, landlocked, **kwargs
     ):
-        self.region         = region
-        self.continents     = continents
-        self.area           = area
-        self.maps           = maps
-        self.capitalInfo    = capitalInfo
-        self.latlng         = latlng
-        self.landlocked     = landlocked
+        self.region = region
+        self.continents = continents
+        self.area = area
+        self.maps = maps
+        self.capitalInfo = capitalInfo
+        self.latlng = latlng
+        self.landlocked = landlocked
         self.capital = self.borders = self.subregion = None
         if "capital" in kwargs:
             self.capital = kwargs.pop("capital")
@@ -43,9 +43,9 @@ class lcParse:
 
 class pcParse:
     def __init__(self, population, status, unMember, **kwargs):
-        self.population     = population
-        self.status         = status
-        self.unMember       = unMember
+        self.population = population
+        self.status = status
+        self.unMember = unMember
         self.gini = self.languages = self.demonyms = self.gini = None
         if "languages" in kwargs:
             self.languages = kwargs.pop("languages")
@@ -59,18 +59,16 @@ class pcParse:
     def __repr__(self):
         ret = ""
         if self.gini:
-            print(self.gini)
-        if self.languages:
-            print(self.languages)
-        return f"Population\t:{self.population}\nStatus\t\t:{self.status}"
+            ret += f"\nGini Index\t:{self.gini[max(self.gini.keys())]}"
+        return f"Population\t:{self.population}\nStatus\t\t:{self.status}{ret}"
 
 
 class idParse:
     def __init__(self, flag, flags, coatOfArms, idd, **kwargs):
-        self.flag       = flag
-        self.flags      = flags
+        self.flag = flag
+        self.flags = flags
         self.coatOfArms = coatOfArms
-        self.idd        = idd
+        self.idd = idd
         if "postalCode" in kwargs:
             self.postalCode = kwargs.pop("postalCode")
         if "tld" in kwargs:
@@ -83,10 +81,10 @@ class PARSE:
         self.locl = lcParse(**kwargs)
         self.popl = pcParse(**kwargs)
         self.info = idParse(**kwargs)
-        self.timezones   = timezones
+        self.timezones = timezones
         self.startOfWeek = startOfWeek
         if "currencies" in kwargs:
             self.currencies = kwargs.pop("currencies")
 
     def __repr__(self):
-        return f"{self.name}\n{self.location}\n{self.population}"
+        return f"{self.name}\n{self.locl}\n{self.popl}"

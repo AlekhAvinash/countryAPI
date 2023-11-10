@@ -16,9 +16,9 @@ from countries_wrapper import (
 )
 
 # Get three random countries.
-# n = 3
-# print(f"Getting {n} random countries.")
-# print(*get_samples(n), sep="\n\n\n")
+n = 3
+print(f"Getting {n} random countries.")
+print(*get_samples(n), sep="\n\n\n")
 
 # Get a country by name (official/common/full).
 # print(f"\n\n\nGetting country by name.")
