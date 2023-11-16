@@ -1,7 +1,7 @@
 class nmParse:
     def __init__(self, common, official, translations, altSpellings, **kwargs):
         self.codes = self.ccparse(**kwargs)
-        self.name = common
+        self.cname = common
         self.official = official
         self.trns = translations
         self.altSpellings = altSpellings
@@ -15,7 +15,7 @@ class nmParse:
         return ret
 
     def __repr__(self):
-        return f"Common Name\t:{self.name}"
+        return f"Common Name\t:{self.cname}"
 
 
 class lcParse:
@@ -69,6 +69,7 @@ class idParse:
         self.flags = flags
         self.coatOfArms = coatOfArms
         self.idd = idd
+        self.postalCode = self.tld = None
         if "postalCode" in kwargs:
             self.postalCode = kwargs.pop("postalCode")
         if "tld" in kwargs:

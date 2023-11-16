@@ -12,6 +12,9 @@ ADDR = "restcountries.com/v3.1/"
 log = logging.getLogger()
 
 
+CACHE = []
+
+
 def get(sub_domain, *f):
     url = f"https://{ADDR}/{sub_domain}"
     if f:
@@ -27,7 +30,10 @@ def get(sub_domain, *f):
 
 
 def get_all(*f):
-    return get("all", *f)
+    global CACHE
+    if not CACHE:
+        CACHE = get("all", *f)
+    return CACHE
 
 
 def get_by_name(name, fullText=False, *f):
