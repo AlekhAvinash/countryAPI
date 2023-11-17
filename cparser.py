@@ -84,6 +84,7 @@ class PARSE:
         self.info = idParse(**kwargs)
         self.timezones = timezones
         self.startOfWeek = startOfWeek
+        self.currencies = None
         if "currencies" in kwargs:
             self.currencies = kwargs.pop("currencies")
 

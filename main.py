@@ -18,9 +18,9 @@ def getinp():
     return 0
 
 
-def main():
+def main(ctr):
     pts = 0
-    for _ in range(4):
+    for i in range(ctr):
         qt = choice(QTS)()
         print(qt)
         out = getinp()
@@ -33,10 +33,11 @@ def main():
             print("[-] Input Error. Exiting.")
             return 0
         print("---" * 10)
+        print(f"[i] Question {i}/{ctr}!!")
         print("---" * 10)
     return pts
 
 
 if __name__ == "__main__":
-    ret = main()
-    print(f"[+] Your score is: {ret}")
+    ret = main(20)
+    print(f"[i] Your score is: {ret}")
