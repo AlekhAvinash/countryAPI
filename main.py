@@ -21,6 +21,9 @@ def getinp():
 def main(ctr):
     pts = 0
     for i in range(ctr):
+        print("---" * 10)
+        print(f"[i] Question {i+1}/{ctr}!!")
+        print("---" * 10)
         qt = choice(QTS)()
         print(qt)
         out = getinp()
@@ -32,9 +35,6 @@ def main(ctr):
         else:
             print("[-] Input Error. Exiting.")
             return 0
-        print("---" * 10)
-        print(f"[i] Question {i}/{ctr}!!")
-        print("---" * 10)
     return pts
 
 
